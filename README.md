@@ -29,17 +29,14 @@ Users should be able to:
 
 ## Desktop design
 
-<p float="left">
-  <img src="./screenshots/desktop-design-1.png" width="50%" />
-  <img src="./screenshots/desktop-design-2.png" width="50%" />
-</p>
+![](./screenshots/desktop-design.png)
 
 ## Mobile design
 
 <p float="left">
-  <img src="./screenshots/mobile-design-3.png" width="33%" />
   <img src="./screenshots/mobile-design-1.png" width="33%" />
   <img src="./screenshots/mobile-design-2.png" width="33%" />
+  <img src="./screenshots/mobile-design-3.png" width="33%" />
 </p>
 
 
