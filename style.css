@@ -1,0 +1,906 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --main-color: hsl(176, 50%, 47%);
+}
+
+p {
+    color: hsl(0, 0%, 48%);
+    line-height: 1.7;
+}
+
+button {
+    border: none;
+    background: var(--main-color);
+    font-family: inherit;
+    font-size: 16px;
+    color: white;
+    border-radius: 35px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+body {
+    font-family: 'Commissioner', sans-serif;
+    font-size: 14px;
+    position: relative;
+}
+
+/* Header Start */
+
+header {
+    position: absolute;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.menu-icon {
+	width: 15px;
+	height: 52px;
+	cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 100;
+}
+
+.menu-icon span {
+	display:block;
+	width:100%;
+	height: 3px;
+	background: white;
+	border-radius: 3px;
+	transition: .5s;
+}
+
+.l2 {
+	margin:3px auto;
+}
+
+.active .l1 {
+	animation: line1 .5s forwards;
+}
+
+@keyframes line1 {
+	50% {transform: translateY(6px)}
+	100% {transform: translateY(6px) rotate(135deg)}
+}
+
+.active .l2 {
+	animation:line2 .5s forwards;
+}
+
+@keyframes line2 {
+	0% {transform: scale(1); opacity: 1}
+	100% {transform: scale(0); opacity: 0}
+}
+
+.active .l3 {
+	animation: line3 .5s forwards;
+}
+
+@keyframes line3 {
+	50% {transform: translateY(-6px)}
+	100% {transform:translateY(-6px) rotate(45deg)}
+}
+
+.inactive .l1 {
+	animation:line1-reverse .5s forwards;
+}
+
+@keyframes line1-reverse {
+	0% {transform: translateY(6px) rotate(135deg)}
+	50% {transform: translateY(6px) rotate(0deg)}
+	100% {transform: translateY(0px) rotate(0deg)}
+}
+
+.inactive .l2 {
+	opacity: 0;
+	animation: line2-reverse .5s forwards;
+	animation-delay: .2s;
+}
+
+@keyframes line2-reverse {
+	0% {transform: scale(0); opacity: 0}
+	100% {transform: scale(1); opacity: 1}
+}
+
+.inactive .l3 {
+	animation: line3-reverse .5s forwards;
+}
+
+@keyframes line3-reverse {
+	0% {transform: translateY(-6px) rotate(45deg)}
+	50% {transform: translateY(-6px) rotate(0deg)}
+	100% {transform: translateY(0px) rotate(0deg)}
+}
+
+
+/* Header End */
+
+nav {
+    height: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    background: white;
+    font-size: 18px;
+    z-index: 10;
+    font-weight: 500;
+    background: rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transition: .4s;
+    overflow: hidden;
+}
+
+nav ul {
+    width: 325px;
+    list-style: none;
+    border-radius: 8px;
+    background: white;
+    float: right;
+}
+
+nav ul li {
+    padding: 24px;
+    cursor: pointer;
+}
+
+nav ul li:nth-of-type(2) {
+    border-top: 1px solid hsl(0, 0%, 94%);
+    border-bottom: 1px solid hsl(0, 0%, 94%);
+}
+
+nav.on {
+    display: block;
+    opacity: 1;
+    min-height: 100%;
+    padding: 90px 25px 0 0;
+}
+
+/* Main Start */
+
+.container {
+    position: relative;
+    background: hsl(0, 0%, 98%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 25px;
+}
+
+.image {
+    background: url('images/image-hero-mobile.jpg') no-repeat center;
+    background-size: cover;
+    height: 300px;
+    width: 100%;
+}
+
+.project, .stats, .about {
+    background: white;
+    border-radius: 10px;
+    border: 1px solid hsl(0, 0%, 94%);
+}
+
+.project {
+    text-align: center;
+    width: calc(100% - 50px);
+    position: absolute;
+    top: -55px;
+    border-radius: 8px;
+    padding: 50px 25px 40px;
+}
+
+.project .project-logo {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.project h1 {
+    font-size: 1.46em;
+    margin-bottom: 15px;
+}
+
+.project p {
+    margin-bottom: 22px;
+}
+
+.project > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.project button {
+    height: 57px;
+    width: 100%;
+}
+
+.bookmark {
+    cursor: pointer;
+}
+
+.bookmark span {
+    display: none;
+    width: 0;
+    overflow: hidden;
+}
+
+.bookmark.active circle{
+    fill: hsl(178, 54%, 31%);
+}
+
+.bookmark.active path {
+    fill: white;
+}
+
+.bookmark.inactive circle {
+    fill: #2F2F2F;
+    transition: .5s;
+}
+
+.bookmark.inactive path {
+    fill: #B1B1B1;
+    transition: .5s;
+}
+
+.stats {
+    width: 100%;
+    margin-top: 225px;
+    text-align: center;
+    padding: 35px 25px 37px;
+    color: hsl(0, 0%, 48%);
+    margin-bottom: 25px;
+}
+
+.num {
+    font-size: 2.2em;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: black;
+}
+
+.stats hr {
+    border: none;
+    height: 1px;
+    background: hsl(0, 0%, 85%);
+    margin: 25px 85px;
+}
+
+.stats .bar {
+    height: 12px;
+    background: hsl(0, 0%, 95%);
+    margin-top: 33px;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.stats .bar span {
+    height: 100%;
+    left: 0;
+    top: 0;
+    width: 89.914%;
+    border-radius: inherit;
+    position: absolute;
+    background: var(--main-color);
+}
+
+.about {
+    padding: 38px 22px;
+}
+
+.about h2 {
+    font-size: 1.3em;
+    margin-bottom: 27px;
+}
+
+.about p {
+    margin-bottom: 25px;
+}
+
+.pledge {
+    border: 1px solid hsl(0, 0%, 85%);
+    margin-top: 35px;
+    padding: 22px;
+    border-radius: 8px;
+}
+
+.pledge:nth-of-type(2), .pledge:last-of-type {
+    margin-top: 25px;
+}
+
+.pledge .header {
+    font-weight: 700;
+}
+
+.desc {
+    color: var(--main-color);
+    font-weight: 500;
+    margin: 8px 0 25px;
+}
+
+.pledge .num {
+    margin: 0;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: hsl(0, 0%, 48%);
+}
+
+.pledge button {
+    font-size: inherit;
+    height: 50px;
+    width: 160px;
+    margin-top: 25px;
+}
+
+.pledge.out button{
+    filter: grayscale(100);
+}
+
+.out {
+    opacity: 0.5;
+}
+
+.popup, #thanks {
+    display: none;
+}
+
+.popup.on {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    min-height: 100%;
+    padding: 120px 25px;
+    z-index: 1000;
+}
+
+.popup.on form {
+    background: white;
+    border-radius: 10px;
+    padding: 33px 23px 1px;
+}
+
+form img {
+    cursor: pointer;
+}
+
+form .head {
+    font-weight: 700;
+    font-size: 1.3em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+form > p {
+    margin: 25px 0 23px;
+}
+
+form > label {
+    border: 1px solid hsl(0, 0%, 85%);
+    display: block;
+    padding: 22px 25px 30px 23px;
+    position: relative;
+    margin-bottom: 25px;
+    border-radius: 8px;
+}
+
+input[type=radio] {
+    height: 0;
+    width: 0;
+    opacity: 0;
+    position: absolute;
+    cursor: pointer;
+}
+
+.type {
+    display: grid;
+    grid-template: 50% 50% / 40px auto;
+    align-items: center;
+    margin-bottom: 35px;
+    row-gap: 5px;
+}
+
+form > label:first-of-type {
+    padding: 30px 35px 30px 23px;
+}
+
+form > label:first-of-type .type {
+    grid-template-rows: 1fr;
+    row-gap: 0;
+}
+
+.checkmark {
+    border: 1px solid hsl(0, 0%, 85%);
+    border-radius: 50%;
+    height: 24px;
+    width: 24px;
+    display: inline-block;
+    grid-row: span 2;
+    position: relative;
+    cursor: pointer;
+}
+
+input[type=radio]:checked ~ .checkmark::after {
+    content: "";
+    height: 12px;
+    width: 12px;
+    background: var(--main-color);
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    border-radius: 50%;
+}
+
+.name {
+    font-weight: 700;
+}
+
+.left {
+    color: hsl(0, 0%, 48%);
+    margin-top: 20px;
+    font-weight: 700;
+}
+
+.left span {
+    color: black;
+    font-size: 18px;
+    margin-right: 8px;
+}
+
+label .desc {
+    margin: 0;
+}
+
+label.check {
+    border: 2px solid var(--main-color);
+}
+
+label label {
+    border-top: 1px solid hsl(0, 0%, 85%);
+    display: none;
+    margin: 25px -25px 0 -23px;
+    text-align: center;
+    padding: 25px 25px 0;
+    color: hsl(0, 0%, 48%);
+}
+
+.check label {
+    display: block;
+}
+
+label label .grid {
+    display: grid;
+    margin-top: 25px;
+    grid-template-columns: 46% 49%;
+    justify-content: space-between;
+    position: relative;
+}
+
+label .grid * {
+    height: 48px;
+}
+
+label .grid span {
+    position: absolute;
+    top: 15px;
+    left: 22px;
+}
+
+label .grid input {
+    border-radius: 35px;
+    border: 1px solid hsl(0, 0%, 85%);
+    text-align: center;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: 700;
+}
+
+label .grid input:focus {
+    outline: none;
+    border: 1px solid var(--main-color);
+}
+
+label .grid .error {
+    border: 1px solid red;
+}
+
+.error-text {
+    color: red;
+    margin-top: 10px;
+    text-align: left;
+    font-size: 12px;
+    display: none;
+}
+
+.error-text.activated {
+    display: block;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+label .grid button {
+    font-size: 14px;
+}
+
+#thanks.on {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    min-height: 100%;
+    padding: 145px 25px;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+#thanks .content {
+    background: white;
+    border-radius: 10px;
+    text-align: center;
+    padding: 30px 20px 40px;
+}
+
+.content div {
+    margin: 20px 0 25px;
+    font-size: 1.3em;
+    font-weight: 700;
+}
+
+.content button {
+    width: 110px;
+    height: 50px;
+    margin-top: 30px;
+    font-size: 14px;
+}
+
+/* Main End */
+
+.attribution {
+    padding: 40px 80px;
+    background: white;
+    text-align: center;
+    border: 1px solid hsl(0, 0%, 94%);
+}
+.attribution a {
+    color: var(--main-color);
+    text-decoration: none;
+}
+
+@media (min-width: 768px) {
+
+    header {
+        padding: 40px 60px;
+    }
+
+    .menu-icon {
+        display: none;
+    }
+
+    nav {
+        background: none;
+        display: block;
+        height: auto;
+        right: 60px;
+        opacity: 1;
+        transition: none;
+        font-size: 14px;
+        top: 40px;
+    }
+
+    nav ul {
+        background: none;
+        color: white;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    nav ul li {
+        border: none !important;
+        padding: 0;
+        margin-left: 30px;
+    }
+
+    body {
+        font-size: 16px;
+    }
+
+    .image {
+        background: url("images/image-hero-desktop.jpg") no-repeat center;
+        background-size: cover;
+        height: 400px;
+    }
+
+    .project, .stats, .about, form {
+        width: 730px;
+    }
+
+    .project {
+        top: -90px;
+    }
+
+    .project h1 {
+        font-size: 1.75em;
+    }
+
+    .project p {
+        margin-bottom: 35px;
+    }
+
+    .project > div {
+        gap: 0;
+        padding: 0 20px;
+        justify-content: space-between;
+    }
+
+    .project button {
+        width: 210px;
+    }
+
+    .bookmark {
+        display: flex;
+        align-items: center;
+    }
+
+    .bookmark svg {
+        z-index: 1;
+    }
+
+    .bookmark.active span, .bookmark.inactive span {
+        background: hsl(192, 29%, 97%);
+        display: inline-block;
+        height: 56px;
+        margin-left: -50px;
+        padding-top: 16px;
+        padding-left: 35px;
+        border-radius: 40px;
+        color: hsl(178, 54%, 31%);
+        text-align: center;
+        font-weight: 700;
+        animation: expand 1s forwards;
+    }
+
+    @keyframes expand {
+        0% {
+            width: 0;
+        }
+
+        100% {
+            width: 185px;
+        }
+    }
+
+    .bookmark.inactive span {
+        animation: shrink 1s forwards;
+    }
+
+    @keyframes shrink {
+        0% {
+            width: 185px;
+        }
+
+        100% {
+            width: 0;
+        }
+    }
+
+    .stats {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 180px;
+        padding: 42px 44px;
+        text-align: left;
+    }
+    
+    .stats hr {
+        margin: 0 41px;
+        width: 1px;
+        height: 70px;
+        background-color: hsl(0, 0%, 75%);
+    }
+    
+    .stats #total {
+        margin-right: 50px;
+    }
+
+    .stats .bar {
+        width: 100%;
+    }
+
+    .about {
+        padding: 53px 45px;
+    }
+
+    .about h2 {
+        margin-bottom: 35px;
+    }
+
+    .about p {
+        line-height: 1.85;
+        margin-bottom: 30px;
+    }
+
+    .num {
+        font-size: 2em;
+    }
+
+    .pledge {
+        margin-top: 40px;
+        padding: 40px 33px;
+    }
+
+    .pledge-flex {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .pledge .header {
+        font-size: 18px;
+    }
+
+    .desc {
+        margin: 0;
+    }
+
+    .pledge p {
+        margin:20px 0 25px;
+    }
+
+    .pledge button {
+        margin: 0;
+    }
+
+    .pledge:nth-of-type(2), .pledge:last-of-type {
+        margin-top: 15px;
+    }
+
+    .popup.on {
+        padding: 185px 0;
+    }
+
+    .popup.on form {
+        padding: 50px;
+    }
+
+    form .head {
+        font-size: 1.5em;
+    }
+
+    form > p {
+        margin: 18px 0 30px;
+    }
+
+    form > label {
+        padding: 32px 25px;
+        position: relative;
+    }
+
+    form > label:first-of-type, form > label {
+        padding-right: 10px;
+    }
+
+
+    .type {
+        display: flex;
+        gap: 25px;
+        margin-bottom: 15px;
+    }
+    
+    .type:hover .name {
+        cursor: pointer;
+        color: var(--main-color);
+    }
+
+    .type:hover .checkmark{
+        border: 1px solid var(--main-color);
+    }
+
+    label p {
+        font-size: 15px;
+        padding-left: 50px;
+    }
+
+    .left {
+        position: absolute;
+        top: 32px;
+        right: 25px;
+        margin: 0;
+    }
+
+    label label {
+        margin-top: 35px;
+    }
+
+    .check label {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    label label .grid {
+        margin: 0;
+        grid-template-columns: 100px 100px;
+        margin-right: 15px;
+        gap: 15px;
+    }
+
+    .error-text {
+        position: absolute;
+        bottom: 10px;
+        right: 40px;
+    }
+
+    #thanks.on {
+        padding-top: 460px;
+    }
+
+    #thanks .content {
+        width: 540px;
+        padding: 50px;
+    }
+
+    .content img {
+        width: 90px;
+    }
+
+    .content div {
+        font-size: 1.5em;
+        margin: 40px 0 22px;
+    }
+
+    .content button {
+        margin-top: 35px;
+    }
+
+    button {
+        transition: .2s;
+    }
+
+    button:hover {
+        background: hsl(178, 54%, 31%);
+    }
+
+    .attribution {
+        padding: 25px;
+    }
+
+}
+
+@media (min-width: 1200px) {
+    header {
+        padding: 50px 165px;
+    }
+
+    nav {
+        right: 165px;
+        top: 50px;
+    }
+}
